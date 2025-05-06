@@ -1,12 +1,30 @@
-import useAuthStore from "@/store/useAuth";
+import useAuthStore from "@/core/auth/store/useAuth";
 import { Redirect, Stack } from "expo-router";
-import React from "react";
-import { StyleSheet } from "react-native";
+import React, { useEffect } from "react";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 
 const Layout = () => {
-  const auth = useAuthStore();
+  const { name, check, isChecking } = useAuthStore();
 
-  if (!auth.name) return <Redirect href="/auth/login" />;
+  useEffect(() => {
+    check();
+  }, []);
+
+  if (isChecking)
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          marginBottom: 5,
+        }}
+      >
+        <ActivityIndicator />
+      </View>
+    );
+
+  if (!name) return <Redirect href="/auth/login" />;
 
   return (
     <Stack>

@@ -1,4 +1,4 @@
-import useAuthStore from "@/store/useAuth";
+import useAuthStore from "@/core/auth/store/useAuth";
 import { router } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
@@ -17,7 +17,7 @@ const Login = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Login Screen</Text>
-      <TouchableOpacity style={styles.button} onPress={() => onSubmit("John")}>
+      <TouchableOpacity style={styles.button} onPress={() => onSubmit("Marco")}>
         <Text>Sign in</Text>
       </TouchableOpacity>
     </View>

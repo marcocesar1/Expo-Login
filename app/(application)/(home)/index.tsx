@@ -1,4 +1,4 @@
-import useAuthStore from "@/store/useAuth";
+import useAuthStore from "@/core/auth/store/useAuth";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
@@ -7,7 +7,9 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home Screen</Text>
+      <Text style={styles.title}>Welcome</Text>
+      <Text>{auth.name}</Text>
+      <Text>{auth.email}</Text>
       <TouchableOpacity style={styles.button} onPress={auth.logOut}>
         <Text>Log out</Text>
       </TouchableOpacity>
@@ -33,6 +35,6 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 4,
     backgroundColor: "#eee",
-    marginVertical: 8,
+    marginVertical: 14,
   },
 });
